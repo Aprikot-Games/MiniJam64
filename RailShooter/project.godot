@@ -18,6 +18,10 @@ _global_script_class_icons={
 config/name="Rail Shooter"
 config/icon="res://icon.png"
 
+[display]
+
+window/size/height=576
+
 [input]
 
 move_left={

@@ -21,6 +21,8 @@ func process_y_rot():
 	elif Input.is_action_pressed("move_left"):
 		if rot_y < PI/6:
 			rot_y += AIM_SPEED
+	elif rot_y > -RET_AIM_SPEED and rot_y < RET_AIM_SPEED:
+		rot_y = 0
 	elif rot_y > 0:
 		rot_y -= RET_AIM_SPEED
 	elif rot_y < 0:
@@ -33,6 +35,8 @@ func process_x_rot():
 	elif Input.is_action_pressed("move_up"):
 		if rot_x < PI/6:
 			rot_x += AIM_SPEED
+	elif rot_x > -RET_AIM_SPEED and rot_x < RET_AIM_SPEED:
+		rot_x = 0
 	elif rot_x > 0:
 		rot_x -= RET_AIM_SPEED
 	elif rot_x < 0:
@@ -55,7 +59,7 @@ func _physics_process(delta):
 		velocity.y = 0
 	elif $Ship.transform.origin.y > RAIL_Y and velocity.y > 0:
 		velocity.y = 0
-	print($Ship.transform.origin)
+	#print($Ship.transform.origin)
 	#velocity.y = -speed * sin(rot_x)
 	$Ship.move_and_slide(velocity)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
