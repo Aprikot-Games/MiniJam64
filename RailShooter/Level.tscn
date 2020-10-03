@@ -11,7 +11,7 @@ script = ExtResource( 2 )
 TerrainBlock = ExtResource( 3 )
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( -1, 5.65818e-08, -3.20891e-07, 0, 0.984808, 0.173648, 3.25841e-07, 0.173648, -0.984808, 0, 4.5, -8.385 )
+transform = Transform( -1, 4.23516e-22, -3.25841e-07, -3.31716e-08, 0.994805, 0.101803, 3.24148e-07, 0.101803, -0.994805, 0, 4.27745, -10.3038 )
 
 [node name="TerrainBlock" type="MeshInstance" parent="."]
 transform = Transform( 5, 0, 0, 0, 0.2, 0, 0, 0, 15, 0, 0, 0 )

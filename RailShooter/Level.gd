@@ -1,18 +1,14 @@
 extends Spatial
 export (PackedScene) var TerrainBlock
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+
 var last_spawn_point = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var camera_pos = $Ship.transform.origin
+	var camera_pos = $Ship/Ship.transform.origin
 	camera_pos.z -= 10
 	camera_pos.y += 2
 	$Camera.transform.origin = camera_pos
