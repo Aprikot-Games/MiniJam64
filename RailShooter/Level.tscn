@@ -19,4 +19,4 @@ mesh = SubResource( 1 )
 material/0 = null
 
 [node name="Ship" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.84685, -3.09378 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.30285, -3.09378 )
