@@ -1,11 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
-[ext_resource path="res://res/red-outline.png" type="Texture" id=2]
 
-[sub_resource type="CapsuleMesh" id=1]
-radial_segments = 6
-rings = 1
+[sub_resource type="CubeMesh" id=3]
 
 [sub_resource type="CapsuleShape" id=2]
 
@@ -15,13 +12,16 @@ script = ExtResource( 1 )
 [node name="Ship" type="KinematicBody" parent="."]
 
 [node name="MeshInstance" type="MeshInstance" parent="Ship"]
-mesh = SubResource( 1 )
+transform = Transform( 0.6, 0, 0, 0, 0.3, 0, 0, 0, 1, 0, 0, 0 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Ship"]
 visible = false
 shape = SubResource( 2 )
 
-[node name="Crosshair" type="Sprite3D" parent="Ship"]
+[node name="NearAim" type="Spatial" parent="Ship"]
 transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 20 )
-texture = ExtResource( 2 )
+
+[node name="FarAim" type="Spatial" parent="Ship"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 25 )

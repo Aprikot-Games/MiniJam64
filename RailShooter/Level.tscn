@@ -14,11 +14,6 @@ TerrainBlock = ExtResource( 3 )
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( -1, 0, 3.25841e-07, 0, 1, 0, -3.25841e-07, 0, -1, 0, 4.277, -10 )
 
-[node name="Crosshair" type="Sprite3D" parent="Camera"]
-transform = Transform( 0.075, 5.32907e-16, 0, -5.32907e-16, 0.075, 0, 0, 0, 0.075, 4.355, 2.45, -3.5 )
-visible = false
-texture = ExtResource( 4 )
-
 [node name="TerrainBlock" type="MeshInstance" parent="."]
 transform = Transform( 5, 0, 0, 0, 0.2, 0, 0, 0, 15, 0, 0, 0 )
 mesh = SubResource( 1 )
@@ -26,3 +21,14 @@ material/0 = null
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.303, -3 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="NearAim" type="Sprite" parent="CanvasLayer"]
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 4 )
+
+[node name="FarAim" type="Sprite" parent="CanvasLayer"]
+rotation = 0.785398
+scale = Vector2( 0.06, 0.06 )
+texture = ExtResource( 4 )

@@ -6,7 +6,6 @@ var last_spawn_point = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var crosshair = $Player/Ship/Crosshair
-	crosshair.flags_no_depth_test.set(false)
 	pass # Replace with function body.
 
 func _process(delta):
@@ -37,12 +36,9 @@ func _process(delta):
 		$Camera.transform.origin.y += 0.075
 	elif cam_diff_y < -0.5 and $Camera.transform.origin.y > -0.5:
 		$Camera.transform.origin.y -= 0.075
-	# Get the Z vector from the ship
-	var ship_vector = $Player/Ship.transform.basis.z
-	var cam_dif = $Camera.transform.origin.x - $Player/Ship.transform.origin.x
-	#var crosshair_x = (ship_vector.x * 4) + $Player/Ship.transform.origin.x/6
-	#var crosshair_y = (ship_vector.y * 4) + $Player/Ship.transform.origin.y/24
-	var crosshair_x = cam_dif/2
-	$Camera/Crosshair.transform.origin.x = crosshair_x
-	#$Camera/Crosshair.transform.origin.y = crosshair_y
-	print(ship_vector)
+	var near_aim = $Player/Ship/NearAim
+	var hud_near_aim = $CanvasLayer/NearAim
+	var far_aim = $Player/Ship/FarAim
+	var hud_far_aim = $CanvasLayer/FarAim
+	hud_near_aim.position = $Camera.unproject_position(near_aim.global_transform.origin)
+	hud_far_aim.position = $Camera.unproject_position(far_aim.global_transform.origin)
