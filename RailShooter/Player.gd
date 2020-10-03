@@ -9,6 +9,7 @@ const AIM_SPEED = PI/96
 const RET_AIM_SPEED = AIM_SPEED / 2
 const RAIL_X = 6
 const RAIL_Y = 10
+signal hero_shoot
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	velocity.z = speed
@@ -62,6 +63,8 @@ func _physics_process(delta):
 	#print($Ship.transform.origin)
 	#velocity.y = -speed * sin(rot_x)
 	$Ship.move_and_slide(velocity)
+	if Input.is_action_just_pressed("shoot"):
+		emit_signal("hero_shoot")
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass

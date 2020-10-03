@@ -1,6 +1,8 @@
 extends Spatial
 export (PackedScene) var TerrainBlock
+export (PackedScene) var HeroBullet
 
+const SHOT_SPEED = 250
 var last_spawn_point = 0
 
 # Called when the node enters the scene tree for the first time.
@@ -37,8 +39,16 @@ func _process(delta):
 	elif cam_diff_y < -0.5 and $Camera.transform.origin.y > -0.5:
 		$Camera.transform.origin.y -= 0.075
 	var near_aim = $Player/Ship/NearAim
-	var hud_near_aim = $CanvasLayer/NearAim
+	var hud_near_aim = $HUD/NearAim
 	var far_aim = $Player/Ship/FarAim
-	var hud_far_aim = $CanvasLayer/FarAim
+	var hud_far_aim = $HUD/FarAim
 	hud_near_aim.position = $Camera.unproject_position(near_aim.global_transform.origin)
 	hud_far_aim.position = $Camera.unproject_position(far_aim.global_transform.origin)
+
+func on_hero_shoot():
+	var new_bullet = HeroBullet.instance()
+	add_child(new_bullet)
+	new_bullet.global_transform.origin = $Player/Ship.global_transform.origin
+	new_bullet.linear_velocity.z = SHOT_SPEED * $Player/Ship.transform.basis.z.z
+	new_bullet.linear_velocity.x = SHOT_SPEED * $Player/Ship.transform.basis.z.x
+	new_bullet.linear_velocity.y = SHOT_SPEED * $Player/Ship.transform.basis.z.y
